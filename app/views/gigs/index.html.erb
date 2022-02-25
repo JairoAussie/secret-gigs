@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Gigs</h1>
 
@@ -25,8 +24,6 @@
         <td><%= gig.price %></td>
         <td><%= gig.user_id %></td>
         <td><%= link_to 'Show', gig %></td>
-        <td><%= link_to 'Edit', edit_gig_path(gig) %></td>
-        <td><%= link_to 'Destroy', gig, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Gig', new_gig_path %>
+

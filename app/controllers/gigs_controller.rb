@@ -23,8 +23,8 @@ class GigsController < ApplicationController
 
   # POST /gigs or /gigs.json
   def create
-    @gig = Gig.create(name: gig_params[:name], date: gig_params[:date], area: gig_params[:area], tickets: gig_params[:tickets], price: gig_params[:price], user: current_user)
-
+    # @gig = Gig.create(name: gig_params[:name], date: gig_params[:date], area: gig_params[:area], tickets: gig_params[:tickets], price: gig_params[:price], user: current_user)
+    @gig = Gig.create(gig_params)
     respond_to do |format|
       if @gig.save
         format.html { redirect_to gig_url(@gig), notice: "Gig was successfully created." }
@@ -67,7 +67,7 @@ class GigsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gig_params
-      params.require(:gig).permit(:name, :date, :area, :tickets, :price)
+      params.require(:gig).permit(:name, :date, :area, :tickets, :price, :user_id)
     end
 
     # check if the user is an organizer before creating a new gig

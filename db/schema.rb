@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_03_02_234836) do
+=======
+ActiveRecord::Schema.define(version: 2022_03_03_000254) do
+>>>>>>> tmp
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +47,11 @@ ActiveRecord::Schema.define(version: 2022_03_02_234836) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+<<<<<<< HEAD
   create_table "adresses", force: :cascade do |t|
+=======
+  create_table "addresses", force: :cascade do |t|
+>>>>>>> tmp
     t.string "street"
     t.string "suburb"
     t.string "postcode"
@@ -51,7 +59,11 @@ ActiveRecord::Schema.define(version: 2022_03_02_234836) do
     t.bigint "gig_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
     t.index ["gig_id"], name: "index_adresses_on_gig_id"
+=======
+    t.index ["gig_id"], name: "index_addresses_on_gig_id"
+>>>>>>> tmp
   end
 
   create_table "gigs", force: :cascade do |t|
@@ -83,6 +95,10 @@ ActiveRecord::Schema.define(version: 2022_03_02_234836) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+<<<<<<< HEAD
   add_foreign_key "adresses", "gigs"
+=======
+  add_foreign_key "addresses", "gigs"
+>>>>>>> tmp
   add_foreign_key "gigs", "users"
 end

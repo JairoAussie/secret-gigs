@@ -25,9 +25,15 @@
   <%= @gig.price %>
 </p>
 
+
 <p>
   <strong>Organizer:</strong>
   <%= @gig.user.username %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @gig.address.full_address%>
 </p>
 
 <% if user_signed_in? and (current_user.admin? or current_user.id==@gig.user_id) %>

@@ -35,9 +35,12 @@
   <%= @gig.address.full_address%>
 </p>
 
-<% if user_signed_in? and (current_user.admin? or current_user.id==@gig.user_id) %>
-  <%= link_to 'Edit', edit_gig_path(@gig) %> |
-  <%= link_to 'Destroy', @gig , method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% if user_signed_in? %>
+  <%= link_to 'Buy tickets', new_gig_booking_path(@gig) %> |
+  <% if current_user.admin? or current_user.id==@gig.user_id %>
+    <%= link_to 'Edit', edit_gig_path(@gig) %> |
+    <%= link_to 'Destroy', @gig , method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <% end %>    
 <% end %>
 
 <%= link_to 'Back', gigs_path %>

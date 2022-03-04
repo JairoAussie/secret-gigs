@@ -1,11 +1,15 @@
 class GigsController < ApplicationController
   before_action :set_gig, only: %i[ show edit update destroy ]
-  before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user! , only: [:new, :create, :edit, :update, :destroy, :my_gigs]
   before_action :is_organizer, only: [:new, :create]
   before_action :check_ownership, only: [ :edit, :update, :destroy]
   # GET /gigs or /gigs.json
   def index
     @gigs = Gig.all
+  end
+
+  def my_gigs
+    @gigs = current_user.gigs
   end
 
   # GET /gigs/1 or /gigs/1.json

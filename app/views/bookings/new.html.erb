@@ -1,0 +1,15 @@
+<p><%= "Buy tickets for #{@gig.name}"%></p>
+<%="$#{@gig.price}" %>
+
+<%= form_with model: [@gig, @booking] do |form| %>
+  <div class="field">
+    <%= form.label :tickets %>
+    <%= form.number_field :tickets, min: 1, max: @gig.tickets %>
+    <%="#{@gig.tickets} tickets available"%>
+  </div>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

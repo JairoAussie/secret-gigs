@@ -11,10 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_03_02_234836) do
 =======
 ActiveRecord::Schema.define(version: 2022_03_03_000254) do
 >>>>>>> tmp
+=======
+ActiveRecord::Schema.define(version: 2022_03_04_000653) do
+>>>>>>> booking_branch
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +70,17 @@ ActiveRecord::Schema.define(version: 2022_03_03_000254) do
 >>>>>>> tmp
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.integer "tickets"
+    t.float "price"
+    t.bigint "user_id", null: false
+    t.bigint "gig_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gig_id"], name: "index_bookings_on_gig_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "gigs", force: :cascade do |t|
     t.string "name"
     t.date "date"
@@ -76,6 +91,16 @@ ActiveRecord::Schema.define(version: 2022_03_03_000254) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_gigs_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,6 +124,13 @@ ActiveRecord::Schema.define(version: 2022_03_03_000254) do
   add_foreign_key "adresses", "gigs"
 =======
   add_foreign_key "addresses", "gigs"
+<<<<<<< HEAD
 >>>>>>> tmp
+=======
+  add_foreign_key "bookings", "gigs"
+  add_foreign_key "bookings", "users"
+>>>>>>> booking_branch
   add_foreign_key "gigs", "users"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
 end
